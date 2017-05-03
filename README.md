@@ -1,2 +1,2 @@
-# ArrayCreator
-Pulls the Feature files into an ndarray
+# CS599-Project
+Performs Logistical Regression on the features CSV
