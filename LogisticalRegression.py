@@ -24,8 +24,7 @@ def loadCSV(filename):
     return np.asarray(data, dtype=np.float64), np.asarray(target, dtype=np.int64)    # Return tuple containing data array and target array. Set data type to float64 or else it'll crash when predicting
 
 
-# Load data from scikit-learn, which returns (data, target)
-# note: if you call "boston = load_boston()", it returns a dictionary-like object
+# Load data from CSV file. Edit this to point to the features file
 data, target = loadCSV("D:\\School\\CS 599 - Machine Learning\\ArrayCreator\\features.csv")
 
 # Split the data into two parts: training data and testing data
@@ -38,7 +37,7 @@ log_reg.fit(train_data, train_target)      # Fit the model to the train data and
 test_predict = log_reg.predict(test_data)
 print("Training Accuracy:",log_reg.score(train_data,train_target), "\nTest Accuracy:", log_reg.score(test_data, test_target)) # Compute accuracy
 
-# Task 1-4: show plot a figure to show your predictions and real prices on the testing dataset
+# Show a quick plot
 fig = plt.figure()
 axis = fig.add_subplot(111)
 axis.scatter(range(0, len(test_data)), test_predict, color='blue', label='Predicted')   #Print predicted points
