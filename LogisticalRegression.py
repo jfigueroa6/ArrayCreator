@@ -1,7 +1,9 @@
 from __future__ import print_function
 from sklearn.model_selection import train_test_split
+from sklearn import linear_model
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.patches as mpat
 import csv
 
 # Function to load CSV file
@@ -40,9 +42,13 @@ print("Training Accuracy:",log_reg.score(train_data,train_target), "\nTest Accur
 # Show a quick plot
 fig = plt.figure()
 axis = fig.add_subplot(111)
-axis.scatter(range(0, len(test_data)), test_predict, color='blue', label='Predicted')   #Print predicted points
-axis.scatter(range(0, len(test_data)), test_target, color='red', label='Target')        #Print target points
-for i in range(0, len(test_target)):
-    axis.plot([i,i],[test_target[i],test_predict[i]], 'k-')   #Print a line between the predicted and target
-axis.legend(loc='lower center')
+colors = ['red' if target == 1 else 'blue' for target in test_target]
+axis.scatter(range(0, len(test_data)), test_predict, color=colors)   #Print predicted points
+legend_red = mpat.Patch(color='red', label='Cat')
+legend_blue = mpat.Patch(color='blue', label='Dog')
+#axis.scatter(range(0, len(test_data)), test_predict, color='blue', label='Predicted')   #Print predicted points
+#axis.scatter(range(0, len(test_data)), test_target, color='red', label='Target')        #Print target points
+#for i in range(0, len(test_target)):\
+#    axis.plot([i,i],[test_target[i],test_predict[i]], 'k-')   #Print a line between the predicted and target
+axis.legend(handles=[legend_red, legend_blue], loc='lower center')
 plt.show()
